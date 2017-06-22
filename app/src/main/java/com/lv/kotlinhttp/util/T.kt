@@ -1,8 +1,10 @@
 package com.lv.kotlinhttp.util
 
 import rx.Observable
+import rx.Subscription
 import rx.android.schedulers.AndroidSchedulers
 import rx.schedulers.Schedulers
+import rx.subscriptions.CompositeSubscription
 
 /**
  * Date: 2017-06-21
@@ -10,5 +12,9 @@ import rx.schedulers.Schedulers
  * Description:
  */
 fun <T> Observable<T>.io_main(): Observable<T> {
-    return  this.compose({ tObservable -> tObservable.subscribeOn(Schedulers.io()).unsubscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()) })
+    return this.compose({ tObservable -> tObservable.subscribeOn(Schedulers.io()).unsubscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()) })
+}
+
+fun Subscription.intoCompositeSubscription(compositeSubscription: CompositeSubscription?) {
+    compositeSubscription?.add(this)
 }

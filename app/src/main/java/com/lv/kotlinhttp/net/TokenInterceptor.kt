@@ -10,14 +10,12 @@ import okhttp3.Response
  */
 class TokenInterceptor : Interceptor {
     override fun intercept(chain: Interceptor.Chain?): Response {
-        chain?.let {
-            val originalRequest = chain.request()
-            val newBuilder = originalRequest.newBuilder()
-                    .addHeader("lvtanxi", "lv")
-                    .addHeader("lvtanxi", "lv")
-                    .method(originalRequest.method(), originalRequest.body())
-            return chain.proceed(newBuilder.build())
-        }
-        throw RuntimeException("this Interceptor.Chain is empty")
+        chain ?: throw RuntimeException("this Interceptor.Chain is empty")
+        val originalRequest = chain.request()
+        val newBuilder = originalRequest.newBuilder()
+                .addHeader("lvtanxi", "lv")
+                .addHeader("lvtanxi", "lv")
+                .method(originalRequest.method(), originalRequest.body())
+        return chain.proceed(newBuilder.build())
     }
 }

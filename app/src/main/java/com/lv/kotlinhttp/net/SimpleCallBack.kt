@@ -11,11 +11,11 @@ open class SimpleCallBack<T> {
         _OnSucess = listener
     }
 
-    protected fun onSuccess(t: T) = _OnSucess?.invoke(t)
+    fun onSuccess(t: T) = _OnSucess?.invoke(t)
 
     private var _OnFailure: ((code: Int) -> Unit)? = null
 
-    protected  fun onFailure(code: Int) = _OnFailure?.invoke(code)
+    fun onFailure(code: Int) = _OnFailure?.invoke(code)
 
     fun failure(listener: (code: Int) -> Unit) {
         _OnFailure = listener
@@ -23,7 +23,7 @@ open class SimpleCallBack<T> {
 
     private var _onFinish: (() -> Unit)? = null
 
-   protected fun onFinish() = _onFinish?.invoke()
+   fun onFinish() = _onFinish?.invoke()
 
     fun finish(listener: () -> Unit) {
         _onFinish = listener

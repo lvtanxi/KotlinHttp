@@ -13,13 +13,11 @@ import org.json.JSONObject
  */
 class ProtocolInterceptor : Interceptor {
     override fun intercept(chain: Interceptor.Chain?): Response {
-        chain?.let {
-            val response = chain.proceed(chain.request())
-            val medizType = MediaType.parse("application/json; chartset='utf-8'")
-            val data = parseDataFromBody(response.body()?.string())
-            return response.newBuilder().body(ResponseBody.create(medizType, data)).build()
-        }
-        throw RuntimeException("this Interceptor.Chain is empty")
+        chain ?: throw RuntimeException("this Interceptor.Chain is empty")
+        val response = chain.proceed(chain.request())
+        val medizType = MediaType.parse("application/json; chartset='utf-8'")
+        val data = parseDataFromBody(response.body()?.string())
+        return response.newBuilder().body(ResponseBody.create(medizType, data)).build()
     }
 
     private fun parseDataFromBody(body: String?): String {
