@@ -15,17 +15,25 @@
             android:layout_height="wrap_content"
             android:onClick="dlog"
             android:text="打印日志"/>
+
         <android.support.v7.widget.AppCompatButton
             android:id="@+id/asd"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="dhttp"
             android:text="网络请求"/>
+
         <android.support.v7.widget.AppCompatButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="dARoute"
             android:text="ARoute跳转"/>
+
+        <com.lv.kotlinhttp.ui.NumberProgressBar
+            android:id="@+id/npb"
+            style="@style/UpdateAppNumberProgressBar_Red"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"/>
     </LinearLayout>
 
 </ScrollView>
