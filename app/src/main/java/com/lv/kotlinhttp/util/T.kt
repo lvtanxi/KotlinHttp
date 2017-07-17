@@ -1,5 +1,6 @@
 package com.lv.kotlinhttp.util
 
+import android.view.View
 import rx.Observable
 import rx.Subscription
 import rx.android.schedulers.AndroidSchedulers
@@ -17,4 +18,8 @@ fun <T> Observable<T>.io_main(): Observable<T> {
 
 fun Subscription.intoCompositeSubscription(compositeSubscription: CompositeSubscription?) {
     compositeSubscription?.add(this)
+}
+
+fun View.setVisibility(flag: Boolean){
+    this.visibility = if (flag) View.VISIBLE else View.GONE
 }

@@ -34,6 +34,18 @@
             style="@style/UpdateAppNumberProgressBar_Red"
             android:paddingBottom="10dp"
             android:paddingTop="10dp"/>
+
+        <android.support.v7.widget.AppCompatButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="dAlertDialog"
+            android:text="AlertDialog"/>
+
+        <android.support.v7.widget.AppCompatButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="dSaActionSheetDialog"
+            android:text="SaActionSheetDialog"/>
     </LinearLayout>
 
 </ScrollView>

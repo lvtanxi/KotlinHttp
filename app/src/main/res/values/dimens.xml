@@ -2,4 +2,21 @@
     <dimen name="app_bar_height">180dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="text_margin">16dp</dimen>
+
+
+    <dimen name="height_actionsheet_title">40dp</dimen>
+    <dimen name="height_alert_button">48dp</dimen>
+    <dimen name="height_alert_title">60dp</dimen>
+    <dimen name="marginBottom_actionsheet_msg">14dp</dimen>
+    <dimen name="marginBottom_alert_msg">25dp</dimen>
+    <dimen name="margin_actionsheet_left_right">10dp</dimen>
+    <dimen name="margin_alert_left_right">40dp</dimen>
+    <dimen name="radius_alertview">15px</dimen>
+    <dimen name="size_divier">1dp</dimen>
+    <dimen name="textSize_actionsheet_msg">14sp</dimen>
+    <dimen name="textSize_actionsheet_title">14sp</dimen>
+    <dimen name="textSize_alert_button">18sp</dimen>
+    <dimen name="textSize_alert_msg">15sp</dimen>
+    <dimen name="textSize_alert_title">22sp</dimen>
+
 </resources>

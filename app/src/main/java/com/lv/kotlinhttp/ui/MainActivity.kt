@@ -12,7 +12,6 @@ import com.alibaba.android.arouter.launcher.ARouter
 import com.liulishuo.filedownloader.BaseDownloadTask
 import com.liulishuo.filedownloader.FileDownloadListener
 import com.liulishuo.filedownloader.FileDownloader
-import com.liulishuo.filedownloader.connection.FileDownloadUrlConnection
 import com.lv.kotlinhttp.R
 import com.lv.kotlinhttp.UpdateDialog
 import com.lv.kotlinhttp.model.UpdateBean
@@ -22,15 +21,18 @@ import com.lv.kotlinhttp.net.WidgetInterface
 import com.lv.kotlinhttp.util.DLog
 import com.lv.kotlinhttp.util.intoCompositeSubscription
 import com.lv.kotlinhttp.util.io_main
+import com.lv.kotlinhttp.widget.SaActionSheetDialog
+import com.lv.kotlinhttp.widget.SaAlertDialog
 import rx.subscriptions.CompositeSubscription
 import java.io.File
-import java.net.Proxy
 
 
 class MainActivity : AppCompatActivity(), WidgetInterface {
     private lateinit var ss: ProgressDialog
     private var compositeSubscription: CompositeSubscription? = CompositeSubscription()
     private var updateDialog:UpdateDialog?=null
+    private var dd:SaAlertDialog?=null
+    private var cc:SaActionSheetDialog?=null
     var count = 1
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -60,6 +62,29 @@ class MainActivity : AppCompatActivity(), WidgetInterface {
     fun dARoute(view: View) {
         ARouter.getInstance().build("/test/activity").navigation()
     }
+    fun dAlertDialog(view: View) {
+        if(dd==null) {
+            dd=SaAlertDialog(this)
+                    .builder()
+                    .setTitle("退出当前账号")
+                    .setMsg("再连续登陆15天，就可变身为QQ达人。退出QQ可能会使你现有记录归零，确定退出？")
+                    .setPositiveButton("确认退出")
+                    .setNegativeButton("取消了")
+        }
+        dd?.show()
+
+    }
+    fun dSaActionSheetDialog(view: View) {
+        if(cc==null) {
+            cc=SaActionSheetDialog(this)
+                    .builder()
+                    .addSheetItems(arrayListOf("发送给好友", "转载到空间相册", "上传到群相册", "保存到手机", "收藏", "查看聊天图片"), {
+                        DLog.d(it)
+                    })
+        }
+        cc?.show()
+
+    }
 
 
     fun showUpdateDailog(updateBean: UpdateBean) {
@@ -72,13 +97,8 @@ class MainActivity : AppCompatActivity(), WidgetInterface {
     }
 
     private fun downLoadApp(updateBean: UpdateBean) {
-        FileDownloader.setupOnApplicationOnCreate(application)
-                .connectionCreator(FileDownloadUrlConnection.Creator(FileDownloadUrlConnection.Configuration()
-                        .connectTimeout(15000) // set connection timeout.
-                        .readTimeout(15000) // set read timeout.
-                        .proxy(Proxy.NO_PROXY) // set proxy
-                ))
-                .commit()
+        DLog.d(">>>>>>>>>>>")
+        FileDownloader.setup(this)
         FileDownloader.getImpl().create("http://mt.wumart.com/app/down/WmHelper.apk")
                 .setPath("${Environment.getExternalStorageDirectory()}${File.separator}WmHelper.apk")
                 .setListener(object : FileDownloadListener() {
