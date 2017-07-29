@@ -43,9 +43,9 @@ class SaAlertDialog(private val context: Context) {
         rootView.btn_neg.visibility = View.GONE
         rootView.btn_pos.visibility = View.GONE
         rootView.img_line.visibility = View.GONE
-        rootView.lLayout_bg.layoutParams = FrameLayout.LayoutParams(widthPixels, LinearLayout.LayoutParams.WRAP_CONTENT)
         dialog = Dialog(context, R.style.AlertDialogStyle)
         dialog?.setContentView(rootView)
+        rootView.lLayout_bg.layoutParams = FrameLayout.LayoutParams(widthPixels, LinearLayout.LayoutParams.WRAP_CONTENT)
         return this
     }
 

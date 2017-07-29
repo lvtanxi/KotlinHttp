@@ -23,6 +23,7 @@ import com.lv.kotlinhttp.util.intoCompositeSubscription
 import com.lv.kotlinhttp.util.io_main
 import com.lv.kotlinhttp.widget.SaActionSheetDialog
 import com.lv.kotlinhttp.widget.SaAlertDialog
+import com.orhanobut.hawk.Hawk
 import rx.subscriptions.CompositeSubscription
 import java.io.File
 
@@ -39,6 +40,7 @@ class MainActivity : AppCompatActivity(), WidgetInterface {
         setContentView(R.layout.activity_main)
         ss = ProgressDialog(this)
         DLog.init()
+        Hawk.put("123","asdfasd")
     }
 
     fun dlog(view: View) {
@@ -67,7 +69,7 @@ class MainActivity : AppCompatActivity(), WidgetInterface {
             dd=SaAlertDialog(this)
                     .builder()
                     .setTitle("退出当前账号")
-                    .setMsg("再连续登陆15天，就可变身为QQ达人。退出QQ可能会使你现有记录归零，确定退出？")
+                    .setMsg("再连续登陆15")
                     .setPositiveButton("确认退出")
                     .setNegativeButton("取消了")
         }
