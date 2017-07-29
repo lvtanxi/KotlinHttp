@@ -51,4 +51,5 @@ dependencies {
     compile 'cn.bingoogolapple:bga-qrcodecore:1.1.7@aar'
     compile 'cn.bingoogolapple:bga-zbar:1.1.7@aar'
     compile 'com.jaeger.statusbarutil:library:1.4.0'
+    compile 'com.airbnb.android:lottie:2.1.0'
 }

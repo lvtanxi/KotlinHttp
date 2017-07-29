@@ -24,6 +24,7 @@ import com.lv.kotlinhttp.util.io_main
 import com.lv.kotlinhttp.widget.SaActionSheetDialog
 import com.lv.kotlinhttp.widget.SaAlertDialog
 import com.orhanobut.hawk.Hawk
+import kotlinx.android.synthetic.main.activity_main.*
 import rx.subscriptions.CompositeSubscription
 import java.io.File
 
@@ -41,6 +42,9 @@ class MainActivity : AppCompatActivity(), WidgetInterface {
         ss = ProgressDialog(this)
         DLog.init()
         Hawk.put("123","asdfasd")
+        animation_view.setOnClickListener {
+            animation_view.playAnimation()
+        }
     }
 
     fun dlog(view: View) {
